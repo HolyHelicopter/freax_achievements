@@ -102,30 +102,34 @@
             );
         }
 
-        function show_notification_3 () {
+        function show_notification_5 () {
             $('.popup').css('opacity', '0');
             setTimeout(check_notification_queue, 1100);
         }
-        function show_notification_2 () {
+        function show_notification_4 () {
             var top_ending = window.table_data['notification']['top'] + 'px';
+            $('.popup').css('top', top_ending);
+            $('.popup').css('opacity', '1');
 
+            setTimeout(show_notification_5, 6000);
+        }
+        function show_notification_3 () {
             $('.popup').css('transition', 'opacity 1s ease-in-out, top 2s ease-in-out');
 
-            $('.popup').css('opacity', '1');
-            $('.popup').css('top', top_ending);
+            setTimeout(show_notification_4, 10);
+        }
+        function show_notification_2 () {
+            var top_starting = (window.table_data['notification']['top'] + 100) + 'px';
+            $('.popup').css('top', top_starting);
 
-            setTimeout(show_notification_3, 6000);
+            setTimeout(show_notification_3, 10);
         }
         function show_notification (text) {
             $('.popup-text').html(text);
 
-            var top_starting = (window.table_data['notification']['top'] + 100) + 'px';
-
             $('.popup').css('transition', 'none');
 
-            $('.popup').css('top', top_starting);
-
-            setTimeout(show_notification_2, 1);
+            setTimeout(show_notification_2, 10);
         }
 
         function check_notification_queue () {
